@@ -1,0 +1,76 @@
+﻿@model COMP306_Group6_Frontend.Models.BookingCreateDto
+@{
+    ViewData["Title"] = "Book a Flight";
+    var flights = ViewBag.Flights as List<COMP306_Group6_Frontend.Models.FlightReadDto>;
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-light">
+    <h2 class="mb-4 text-primary">Book a New Flight</h2>
+    <form asp-action="Create" method="post" class="needs-validation" novalidate>
+   
+        <div class="mb-4">
+            <label asp-for="FlightId" class="form-label fw-bold">Flight</label>
+            <select id="flight-select" asp-for="FlightId" class="form-select" required>
+                <option value="">Select a flight...</option>
+                @if (flights != null)
+                {
+                    foreach (var flight in flights)
+                    {
+                        <option value="@flight.FlightId"
+                                data-price="@flight.BasePrice">
+                            @flight.FlightNumber - @flight.DepartureAirport &#8594; @flight.ArrivalAirport (@flight.DepartureTime.ToShortDateString())
+                        </option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label fw-bold">Flight Price (per seat)</label>
+            <input id="flight-price" class="form-control" readonly />
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="PassengerName" class="form-label fw-bold">Name</label>
+            <input asp-for="PassengerName" class="form-control" required autocomplete="off" />
+        </div>
+        <div class="mb-4">
+            <label asp-for="Email" class="form-label fw-bold">Email</label>
+            <input asp-for="Email" class="form-control" type="email" required autocomplete="off" />
+        </div>
+        <div class="mb-4">
+            <label asp-for="SeatCount" class="form-label fw-bold">Seats</label>
+            <input asp-for="SeatCount" type="number" min="1" class="form-control" required id="seat-count" />
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label fw-bold">Total Price</label>
+            <input id="total-price" class="form-control" readonly />
+        </div>
+        <div class="d-flex">
+            <button type="submit" class="btn btn-success px-4">Book Flight</button>
+            <a href="/Booking" class="btn btn-outline-secondary ms-3">Cancel</a>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    <script>
+        function formatCurrency(value) {
+            return value ? "$" + Number(value).toFixed(2) : "";
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const flightSelect = document.getElementById("flight-select");
+            const priceInput = document.getElementById("flight-price");
+            const seatCountInput = document.getElementById("seat-count");
+            const totalPriceInput = document.getElementById("total-price");
+            function updatePrices() {
+                const selected = flightSelect.options[flightSelect.selectedIndex];
+                const price = selected && selected.dataset.price ? Number(selected.dataset.price) : 0;
+                const seats = seatCountInput ? Number(seatCountInput.value) : 1;
+                priceInput.value = formatCurrency(price);
+                totalPriceInput.value = formatCurrency(price * seats);
+            }
+            if (flightSelect) flightSelect.addEventListener("change", updatePrices);
+            if (seatCountInput) seatCountInput.addEventListener("input", updatePrices);
+        });
+    </script>
+}

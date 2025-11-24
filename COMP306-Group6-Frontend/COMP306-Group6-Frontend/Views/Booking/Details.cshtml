@@ -1,0 +1,25 @@
+﻿@model COMP306_Group6_Frontend.Models.BookingReadDto
+@{
+    ViewData["Title"] = "Booking Details";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-white">
+    <h2 class="mb-4 text-primary">Booking Details</h2>
+    <dl class="row">
+        <dt class="col-sm-4">ID:</dt>
+        <dd class="col-sm-8">@Model.Id</dd>
+        <dt class="col-sm-4">Flight:</dt>
+        <dd class="col-sm-8">@Model.FlightId</dd>
+        <dt class="col-sm-4">Name:</dt>
+        <dd class="col-sm-8">@Model.PassengerName</dd>
+        <dt class="col-sm-4">Email:</dt>
+        <dd class="col-sm-8">@Model.Email</dd>
+        <dt class="col-sm-4">Seats:</dt>
+        <dd class="col-sm-8">@Model.SeatCount</dd>
+        <dt class="col-sm-4">Status:</dt>
+        <dd class="col-sm-8">@Model.Status</dd>
+        <dt class="col-sm-4">Total Price:</dt>
+        <dd class="col-sm-8">@Model.TotalPrice.ToString("C")</dd>
+    </dl>
+    <a class="btn btn-primary px-4" href="@Url.Action("Edit", new { id = Model.Id })">Edit</a>
+    <a class="btn btn-outline-secondary ms-3" href="@Url.Action("Index")">Back to List</a>
+</div>

@@ -1,0 +1,37 @@
+﻿@model COMP306_Group6_Frontend.Models.AirportCreateDto
+@{
+    ViewData["Title"] = "Add Airport";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-light">
+    <h2 class="mb-4 text-primary">Add New Airport</h2>
+    <form asp-action="Create" method="post" class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="AirportCode" class="form-label fw-bold"></label>
+            <input asp-for="AirportCode" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="AirportName" class="form-label fw-bold"></label>
+            <input asp-for="AirportName" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="City" class="form-label fw-bold"></label>
+            <input asp-for="City" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Country" class="form-label fw-bold"></label>
+            <input asp-for="Country" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Timezone" class="form-label fw-bold"></label>
+            <input asp-for="Timezone" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="NumberOfTerminals" class="form-label fw-bold"></label>
+            <input asp-for="NumberOfTerminals" type="number" class="form-control" min="1" required />
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-success px-4">Save</button>
+            <a href="/Airport" class="btn btn-outline-secondary ms-3">Cancel</a>
+        </div>
+    </form>
+</div>

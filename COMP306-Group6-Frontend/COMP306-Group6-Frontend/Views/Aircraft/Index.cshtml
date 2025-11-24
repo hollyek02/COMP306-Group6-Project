@@ -1,0 +1,48 @@
+﻿@model List<COMP306_Group6_Frontend.Models.AircraftReadDto>
+@{
+    ViewData["Title"] = "All Aircraft";
+}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0 text-primary">Our Aircraft Fleet</h2>
+        <a href="/Aircraft/Create" class="btn btn-success btn-lg">Add New Aircraft</a>
+    </div>
+    <table class="table table-striped table-bordered table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <th>Total Seats</th>
+                <th>Business</th>
+                <th>Economy</th>
+                <th>Year</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ac in Model)
+            {
+                <tr>
+                    <td>@ac.AircraftId</td>
+                    <td>@ac.Model</td>
+                    <td>@ac.Manufacturer</td>
+                    <td>@ac.TotalSeats</td>
+                    <td>@ac.BusinessClassSeats</td>
+                    <td>@ac.EconomyClassSeats</td>
+                    <td>@ac.YearManufactured</td>
+                    <td>
+                        <a class="btn btn-sm btn-link" href="@Url.Action("Details", new { id = ac.AircraftId })">Details</a>
+                        <a class="btn btn-sm btn-link" href="@Url.Action("Edit", new { id = ac.AircraftId })">Edit</a>
+                        <a class="btn btn-sm btn-danger"
+                           href="@Url.Action("Delete", new { id = ac.AircraftId })"
+                           onclick="return confirm('Are you sure you want to delete this aircraft?');">
+                            Delete
+                        </a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

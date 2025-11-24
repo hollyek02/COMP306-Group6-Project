@@ -1,0 +1,6 @@
+@COMP306_Group_Project_Group_6_HostAddress = http://localhost:5091
+
+GET {{COMP306_Group_Project_Group_6_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

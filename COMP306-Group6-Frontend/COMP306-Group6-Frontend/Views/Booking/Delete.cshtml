@@ -1,0 +1,18 @@
+﻿@model COMP306_Group6_Frontend.Models.BookingReadDto
+@{
+    ViewData["Title"] = "Delete Booking";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-light">
+    <h3 class="mb-4 text-danger">Are you sure you want to delete this booking for <span class="fw-bold">@Model.PassengerName</span>?</h3>
+    <dl class="row">
+        <dt class="col-sm-4">Flight:</dt>
+        <dd class="col-sm-8">@Model.FlightId</dd>
+        <dt class="col-sm-4">Seats:</dt>
+        <dd class="col-sm-8">@Model.SeatCount</dd>
+    </dl>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger px-4">Delete</button>
+        <a asp-action="Index" class="btn btn-outline-secondary ms-3">Cancel</a>
+    </form>
+</div>

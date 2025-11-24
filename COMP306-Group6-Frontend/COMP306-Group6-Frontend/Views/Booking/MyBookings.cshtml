@@ -1,0 +1,46 @@
+﻿@model List<COMP306_Group6_Frontend.Models.BookingReadDto>
+@{
+    var email = ViewBag.Email as string;
+    ViewData["Title"] = "My Bookings";
+}
+<div class="container mt-4">
+    <h2 class="mb-3 text-primary">Bookings for @email</h2>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">No bookings found for <b>@email</b>.</div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Flight</th>
+                    <th>Status</th>
+                    <th>Seats</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td>@b.Id</td>
+                        <td>@b.FlightId</td>
+                        <td>@b.Status</td>
+                        <td>@b.SeatCount</td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@b.Id" class="btn btn-link">Details</a>
+                            <a asp-action="Delete" asp-route-id="@b.Id"
+                               class="btn btn-danger btn-sm ms-1"
+                               onclick="return confirm('Are you sure you want to delete this booking?');">
+                                Delete
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

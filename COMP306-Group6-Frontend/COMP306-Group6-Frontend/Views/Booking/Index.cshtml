@@ -1,0 +1,39 @@
+﻿@model List<COMP306_Group6_Frontend.Models.BookingReadDto>
+@{
+    ViewData["Title"] = "All Bookings";
+}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0 text-primary">All Bookings</h2>
+        <a href="/Booking/Create" class="btn btn-success btn-lg">Book a New Flight</a>
+    </div>
+    <table class="table table-striped table-bordered table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Flight</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Seats</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var b in Model)
+            {
+                <tr>
+                    <td>@b.Id</td>
+                    <td>@b.FlightId</td>
+                    <td>@b.PassengerName</td>
+                    <td>@b.Status</td>
+                    <td>@b.SeatCount</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@b.Id" class="btn btn-link">Details</a>
+                        <a asp-action="Edit" asp-route-id="@b.Id" class="btn btn-link">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@b.Id" class="btn btn-danger btn-sm ms-1">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

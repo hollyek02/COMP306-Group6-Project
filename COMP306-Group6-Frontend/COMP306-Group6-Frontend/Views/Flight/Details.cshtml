@@ -1,0 +1,31 @@
+﻿@model COMP306_Group6_Frontend.Models.FlightReadDto
+@{
+    ViewData["Title"] = "Flight Details";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-white">
+    <h2 class="mb-4 text-primary">Flight Details</h2>
+    <dl class="row">
+        <dt class="col-sm-4">ID:</dt>
+        <dd class="col-sm-8">@Model.FlightId</dd>
+        <dt class="col-sm-4">Flight Number:</dt>
+        <dd class="col-sm-8">@Model.FlightNumber</dd>
+        <dt class="col-sm-4">From:</dt>
+        <dd class="col-sm-8">@Model.DepartureAirport</dd>
+        <dt class="col-sm-4">To:</dt>
+        <dd class="col-sm-8">@Model.ArrivalAirport</dd>
+        <dt class="col-sm-4">Aircraft:</dt>
+        <dd class="col-sm-8">@Model.AircraftId</dd>
+        <dt class="col-sm-4">Departs:</dt>
+        <dd class="col-sm-8">@Model.DepartureTime</dd>
+        <dt class="col-sm-4">Arrives:</dt>
+        <dd class="col-sm-8">@Model.ArrivalTime</dd>
+        <dt class="col-sm-4">Price:</dt>
+        <dd class="col-sm-8">@Model.BasePrice</dd>
+        <dt class="col-sm-4">Status:</dt>
+        <dd class="col-sm-8">@Model.Status</dd>
+        <dt class="col-sm-4">Seats:</dt>
+        <dd class="col-sm-8">@Model.AvailableSeats</dd>
+    </dl>
+    <a class="btn btn-primary px-4" href="@Url.Action("Edit", new { id = Model.FlightId })">Edit</a>
+    <a class="btn btn-outline-secondary ms-3" href="@Url.Action("Index")">Back to List</a>
+</div>

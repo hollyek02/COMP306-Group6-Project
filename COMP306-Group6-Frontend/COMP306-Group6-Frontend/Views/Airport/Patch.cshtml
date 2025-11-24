@@ -1,0 +1,34 @@
+﻿@model COMP306_Group6_Frontend.Models.AirportPatchDto
+@{
+    var airportCode = ViewBag.AirportCode as string;
+    ViewData["Title"] = "Patch Airport";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-light">
+    <h2 class="mb-4 text-secondary">Patch Airport</h2>
+    <form asp-action="Patch" asp-route-code="@airportCode" method="post" class="row g-3">
+        <div class="col-md-6">
+            <label asp-for="AirportName" class="form-label fw-bold"></label>
+            <input asp-for="AirportName" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="City" class="form-label fw-bold"></label>
+            <input asp-for="City" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Country" class="form-label fw-bold"></label>
+            <input asp-for="Country" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Timezone" class="form-label fw-bold"></label>
+            <input asp-for="Timezone" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="NumberOfTerminals" class="form-label fw-bold"></label>
+            <input asp-for="NumberOfTerminals" type="number" class="form-control" min="1" />
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-warning px-4">Save Patch</button>
+            <a href="/Airport" class="btn btn-outline-secondary ms-3">Cancel</a>
+        </div>
+    </form>
+</div>

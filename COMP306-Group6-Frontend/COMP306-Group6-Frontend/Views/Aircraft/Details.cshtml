@@ -1,0 +1,25 @@
+﻿@model COMP306_Group6_Frontend.Models.AircraftReadDto
+@{
+    ViewData["Title"] = "Aircraft Details";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-white">
+    <h2 class="mb-4 text-primary">Aircraft Details</h2>
+    <dl class="row">
+        <dt class="col-sm-3">ID:</dt>
+        <dd class="col-sm-9">@Model.AircraftId</dd>
+        <dt class="col-sm-3">Model:</dt>
+        <dd class="col-sm-9">@Model.Model</dd>
+        <dt class="col-sm-3">Manufacturer:</dt>
+        <dd class="col-sm-9">@Model.Manufacturer</dd>
+        <dt class="col-sm-3">Total Seats:</dt>
+        <dd class="col-sm-9">@Model.TotalSeats</dd>
+        <dt class="col-sm-3">Business Seats:</dt>
+        <dd class="col-sm-9">@Model.BusinessClassSeats</dd>
+        <dt class="col-sm-3">Economy Seats:</dt>
+        <dd class="col-sm-9">@Model.EconomyClassSeats</dd>
+        <dt class="col-sm-3">Year Manufactured:</dt>
+        <dd class="col-sm-9">@Model.YearManufactured</dd>
+    </dl>
+    <a class="btn btn-primary px-4" href="@Url.Action("Edit", new { id = Model.AircraftId })">Edit</a>
+    <a class="btn btn-outline-secondary ms-3" href="@Url.Action("Index")">Back to List</a>
+</div>

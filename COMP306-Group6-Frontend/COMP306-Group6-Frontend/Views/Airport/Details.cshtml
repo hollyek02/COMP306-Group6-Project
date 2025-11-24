@@ -1,0 +1,23 @@
+﻿@model COMP306_Group6_Frontend.Models.AirportReadDto
+@{
+    ViewData["Title"] = "Airport Details";
+}
+<div class="container mt-5 mb-5 p-4 shadow rounded bg-white">
+    <h2 class="mb-4 text-primary">Airport Details</h2>
+    <dl class="row">
+        <dt class="col-sm-4">Code:</dt>
+        <dd class="col-sm-8">@Model.AirportCode</dd>
+        <dt class="col-sm-4">Name:</dt>
+        <dd class="col-sm-8">@Model.AirportName</dd>
+        <dt class="col-sm-4">City:</dt>
+        <dd class="col-sm-8">@Model.City</dd>
+        <dt class="col-sm-4">Country:</dt>
+        <dd class="col-sm-8">@Model.Country</dd>
+        <dt class="col-sm-4">Timezone:</dt>
+        <dd class="col-sm-8">@Model.Timezone</dd>
+        <dt class="col-sm-4">Number of Terminals:</dt>
+        <dd class="col-sm-8">@Model.NumberOfTerminals</dd>
+    </dl>
+    <a class="btn btn-primary px-4" href="@Url.Action("Edit", new { code = Model.AirportCode })">Edit</a>
+    <a class="btn btn-outline-secondary ms-3" href="@Url.Action("Index")">Back to List</a>
+</div>

@@ -1,0 +1,58 @@
+
+# Build outputs and binaries
+bin/
+obj/
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+[Ww]in32/
+[Aa]rm*/
+bld/
+artifacts/
+
+
+# Visual Studio and editor files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+
+# Local launch config and user settings
+**/Properties/launchSettings.json
+
+
+# NuGet packages and build cache
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# Logs and diagnostic output
+[Ll]og/
+[Ll]ogs/
+*.log
+
+
+# Sensitive and development configuration files
+appsettings.json
+appsettings.*.json
+!appsettings.Development.json.template
+
+
+# OS/IDE junk files
+.DS_Store
+Thumbs.db
+
+
+# Ignore nested git repositories 
+*/.git/
+
